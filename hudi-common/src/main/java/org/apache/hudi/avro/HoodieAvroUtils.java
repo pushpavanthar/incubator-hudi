@@ -769,7 +769,14 @@ public class HoodieAvroUtils {
     return getRecordColumnValues(record, columns, schema.get(), consistentLogicalTimestampEnabled);
   }
 
-  // TODO java-doc
+  /**
+   * Given an avro record with a given schema, rewrites it into the new schema while setting fields only from the new schema.
+   * This is a convenience method that calls the overloaded version with an empty renameCols map.
+   *
+   * @param oldRecord oldRecord to be rewritten
+   * @param newSchema newSchema used to rewrite oldRecord
+   * @return newRecord for new Schema
+   */
   public static GenericRecord rewriteRecordWithNewSchema(IndexedRecord oldRecord, Schema newSchema) {
     return rewriteRecordWithNewSchema(oldRecord, newSchema, Collections.emptyMap());
   }
